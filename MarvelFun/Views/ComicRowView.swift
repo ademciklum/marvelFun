@@ -32,8 +32,10 @@ struct ComicRowView: View {
             VStack(alignment: .leading, spacing: 8) {
                 Text(comic.title)
                     .font(.headline)
-                Text(comic.description)
-                    .font(.subheadline)
+                comic.description.map { description in
+                    Text(description)
+                        .font(.subheadline)
+                }
             }
         }
         .listRowInsets(EdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8))
