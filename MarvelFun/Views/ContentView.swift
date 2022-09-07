@@ -29,6 +29,7 @@ struct ContentView: View {
             }
             .listStyle(.sidebar)
             .searchable(text: $viewModel.search, prompt: "Search by name starts with..")
+            .disableAutocorrection(true)
             .refreshable {
                 viewModel.reloadData()
             }
