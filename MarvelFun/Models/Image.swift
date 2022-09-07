@@ -14,6 +14,6 @@ struct Image: Codable {
     var composedImageURL: URL? {
         return URLRequestComposer.compose(path: path,
                                           extention: `extension`,
-                                          authorizationRequired: true)?.url
+                                          authorizationRequired: true)
     }
 }

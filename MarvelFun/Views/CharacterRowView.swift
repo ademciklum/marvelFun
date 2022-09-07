@@ -6,14 +6,15 @@
 //
 
 import SwiftUI
+import CachedAsyncImage
 
 struct CharacterRowView: View {
     
     let character: Character
     
     var body: some View {
-        HStack {
-            AsyncImage(url: character.thumbnail.composedImageURL, content: { image in
+        HStack(spacing: 16) {
+            CachedAsyncImage(url: character.thumbnail?.composedImageURL, content: { image in
                 image.resizable()
             }, placeholder: {
                 ProgressView()
@@ -22,7 +23,8 @@ struct CharacterRowView: View {
             .aspectRatio(contentMode: .fill)
             .frame(width: 70, height: 70, alignment: .topLeading)
             .cornerRadius(8.0)
-            VStack(alignment: .leading) {
+            
+            VStack(alignment: .leading, spacing: 8) {
                 Text(character.name)
                     .font(.headline)
                 Text(character.description)

@@ -6,31 +6,27 @@
 //
 
 import XCTest
+import Combine
 @testable import MarvelFun
 
 class MarvelFunTests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
+    private var cancellables: Set<AnyCancellable> = []
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    func testComicsMappingListViewModel() throws {
+        let characterStub = CharacterStub(id: 1011334, name: "", description: "")
+        let jsonName = "comics-for-cahracter-1011334"
+        let mockNetworkService = MockComicsNetworkService(jsonName: jsonName)
+        let comicsExpectation = expectation(description: "comicsExpectation")
+        let model = ComicsListViewModel(characterStub, networkService: mockNetworkService)
+        
+        model.$comics.drop(while: { $0.isEmpty }).sink { _ in
+            comicsExpectation.fulfill()
+        }.store(in: &cancellables)
+        
+        model.loadComics()
+        
+        waitForExpectations(timeout: 5)
+        XCTAssertEqual(model.comics.count, 4, "Comics mapped view model failure with comics count")
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
 }

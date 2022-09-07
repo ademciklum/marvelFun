@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import CachedAsyncImage
 
 struct ComicRowView: View {
     
@@ -14,20 +15,27 @@ struct ComicRowView: View {
     
     var body: some View {
         VStack {
-            AsyncImage(url: comic.thumbnail.composedImageURL, content: { image in
+            comic.publicationDate.map { date in
+                Text(DateFormatter.comicViewDateFormatter.string(from: date))
+                    .frame(maxWidth: .infinity, alignment: .bottomTrailing)
+                    .font(.footnote)
+            }
+            
+            CachedAsyncImage(url: comic.thumbnail.composedImageURL, content: { image in
                 image.resizable()
             }, placeholder: {
                 ProgressView()
             })
             .aspectRatio(contentMode: .fill)
-//            .frame(maxWidth: .infinity, maxHeight: 120, alignment: .topLeading)
-            .cornerRadius(8.0)
-            VStack(alignment: .leading) {
+            .cornerRadius(8)
+            
+            VStack(alignment: .leading, spacing: 8) {
                 Text(comic.title)
                     .font(.headline)
                 Text(comic.description)
                     .font(.subheadline)
             }
         }
+        .listRowInsets(EdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8))
     }
 }

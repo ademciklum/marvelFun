@@ -52,9 +52,8 @@ public struct URLRequestComposer {
     
     public static func compose(path: String,
                                extention: String? = nil,
-                               method: HTTPMethod = .get,
                                authorizationRequired: Bool,
-                               queryParameters: [String: String]? = nil) -> URLRequest? {
+                               queryParameters: [String: String]? = nil) -> URL? {
         var components = URLComponents(string: path)
         components?.queryItems = []
         if authorizationRequired {
@@ -64,9 +63,7 @@ public struct URLRequestComposer {
         if let extention = extention {
             url.appendPathExtension(extention)
         }
-        var request = URLRequest(url: url)
-//        request.httpMethod = method.rawValue
-        return request
+        return url
     }
     
     private static var authorizationParameters: [String: String] {

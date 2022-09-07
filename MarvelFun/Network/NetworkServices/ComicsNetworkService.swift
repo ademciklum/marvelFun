@@ -8,8 +8,7 @@
 import Foundation
 import Combine
 
-struct ComicsNetworkService {
-    
+struct ComicsNetworkService: ComicsNetworkServiceProtocol {
     func comicsPublisher(_ characterId: Int, offset: Int = 0, limit: Int = 20) -> AnyPublisher<[Comic], Error> {
         let request = URLRequestComposer.compose(request: .characterComics(characterId))
         return DataTaskPublisher.publisherForRequest(request)
@@ -18,4 +17,8 @@ struct ComicsNetworkService {
             .receive(on: RunLoop.main)
             .eraseToAnyPublisher()
     }
+}
+
+protocol ComicsNetworkServiceProtocol {
+    func comicsPublisher(_ characterId: Int, offset: Int, limit: Int) -> AnyPublisher<[Comic], Error>
 }

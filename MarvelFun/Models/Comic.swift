@@ -16,6 +16,10 @@ struct Comic: Decodable, Identifiable {
     let pageCount: Int
     let dates: [ComicDate]?
     
+    var publicationDate: Date? {
+        dates?.first(where: { $0.type == .onSaleDate })?.date
+    }
+    
     enum CodingKeys: String, CodingKey {
         case id, digitalId
         case title
@@ -38,17 +42,18 @@ struct Comic: Decodable, Identifiable {
         description = try container.decode(String.self, forKey: .description)
         thumbnail = try container.decode(Image.self, forKey: .thumbnail)
         pageCount = try container.decode(Int.self, forKey: .pageCount)
-        dates = try? container.decode([ComicDate].self, forKey: .dates)
+        dates = try container.decode([ComicDate].self, forKey: .dates)
     }
 }
 
 struct ComicDate: Decodable {
-    let date: Date
-    let type: String
+    let date: Date?
+    let type: DateType
     
-    enum DateTypes: String {
+    enum DateType: String, Decodable {
         case onSaleDate = "onsaleDate" // publication date
         case focDate
         case unlimitedDate
+        case digitalPurchaseDate
     }
 }

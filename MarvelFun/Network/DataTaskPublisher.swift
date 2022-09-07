@@ -22,6 +22,7 @@ public struct DataTaskPublisher {
                 }
                 return resultsData
             })
+            .retry(2)
             .eraseToAnyPublisher()
     }
 }

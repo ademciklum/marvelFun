@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B75C84C28C7D40D00FEBD72 /* DataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B75C84B28C7D40D00FEBD72 /* DataStorage.swift */; };
+		3B75C84E28C8850600FEBD72 /* RequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B75C84D28C8850600FEBD72 /* RequestError.swift */; };
+		3B75C85128C8891200FEBD72 /* RetryAlertViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B75C85028C8891200FEBD72 /* RetryAlertViewModifier.swift */; };
+		3B75C85428C8A39400FEBD72 /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = 3B75C85328C8A39400FEBD72 /* CachedAsyncImage */; };
+		3B75C85628C8A75600FEBD72 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B75C85528C8A75600FEBD72 /* Launch Screen.storyboard */; };
+		3B75C85B28C8B09000FEBD72 /* MockComicsNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B75C85A28C8B09000FEBD72 /* MockComicsNetworkService.swift */; };
+		3B75C85D28C8B26C00FEBD72 /* comics-for-cahracter-1011334.json in Resources */ = {isa = PBXBuildFile; fileRef = 3B75C85C28C8B26C00FEBD72 /* comics-for-cahracter-1011334.json */; };
+		3B75C86028C8B41A00FEBD72 /* CharacterStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B75C85F28C8B41A00FEBD72 /* CharacterStub.swift */; };
 		3BC0FEE728C4F712006EB92A /* MarvelFunApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC0FEE628C4F712006EB92A /* MarvelFunApp.swift */; };
 		3BC0FEE928C4F712006EB92A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC0FEE828C4F712006EB92A /* ContentView.swift */; };
 		3BC0FEEB28C4F715006EB92A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3BC0FEEA28C4F715006EB92A /* Assets.xcassets */; };
@@ -52,6 +60,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3B75C84B28C7D40D00FEBD72 /* DataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorage.swift; sourceTree = "<group>"; };
+		3B75C84D28C8850600FEBD72 /* RequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestError.swift; sourceTree = "<group>"; };
+		3B75C85028C8891200FEBD72 /* RetryAlertViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetryAlertViewModifier.swift; sourceTree = "<group>"; };
+		3B75C85528C8A75600FEBD72 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		3B75C85A28C8B09000FEBD72 /* MockComicsNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockComicsNetworkService.swift; sourceTree = "<group>"; };
+		3B75C85C28C8B26C00FEBD72 /* comics-for-cahracter-1011334.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "comics-for-cahracter-1011334.json"; sourceTree = "<group>"; };
+		3B75C85F28C8B41A00FEBD72 /* CharacterStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterStub.swift; sourceTree = "<group>"; };
 		3BC0FEE328C4F712006EB92A /* MarvelFun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarvelFun.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BC0FEE628C4F712006EB92A /* MarvelFunApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelFunApp.swift; sourceTree = "<group>"; };
 		3BC0FEE828C4F712006EB92A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -88,6 +103,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B75C85428C8A39400FEBD72 /* CachedAsyncImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,6 +124,46 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3B75C84A28C7D38900FEBD72 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				3BC0FF1F28C52CA8006EB92A /* Constants.swift */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		3B75C84F28C888E600FEBD72 /* ViewModifiers */ = {
+			isa = PBXGroup;
+			children = (
+				3B75C85028C8891200FEBD72 /* RetryAlertViewModifier.swift */,
+			);
+			path = ViewModifiers;
+			sourceTree = "<group>";
+		};
+		3B75C85728C8AF1900FEBD72 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				3B75C85A28C8B09000FEBD72 /* MockComicsNetworkService.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		3B75C85928C8AF3200FEBD72 /* TestData */ = {
+			isa = PBXGroup;
+			children = (
+				3B75C85C28C8B26C00FEBD72 /* comics-for-cahracter-1011334.json */,
+			);
+			path = TestData;
+			sourceTree = "<group>";
+		};
+		3B75C85E28C8B40400FEBD72 /* Stubs */ = {
+			isa = PBXGroup;
+			children = (
+				3B75C85F28C8B41A00FEBD72 /* CharacterStub.swift */,
+			);
+			path = Stubs;
+			sourceTree = "<group>";
+		};
 		3BC0FEDA28C4F712006EB92A = {
 			isa = PBXGroup;
 			children = (
@@ -137,9 +193,10 @@
 				3BC0FF2728C666DF006EB92A /* ViewModels */,
 				3BC0FF2D28C6852B006EB92A /* Extension */,
 				3BC0FF3728C79337006EB92A /* Mapping */,
-				3BC0FF1F28C52CA8006EB92A /* Constants.swift */,
+				3B75C84A28C7D38900FEBD72 /* Domain */,
 				3BC0FEE628C4F712006EB92A /* MarvelFunApp.swift */,
 				3BC0FEEA28C4F715006EB92A /* Assets.xcassets */,
+				3B75C85528C8A75600FEBD72 /* Launch Screen.storyboard */,
 				3BC0FF3228C6A4A5006EB92A /* Info.plist */,
 				3BC0FEEC28C4F715006EB92A /* Preview Content */,
 			);
@@ -158,6 +215,9 @@
 			isa = PBXGroup;
 			children = (
 				3BC0FEFC28C4F715006EB92A /* MarvelFunTests.swift */,
+				3B75C85E28C8B40400FEBD72 /* Stubs */,
+				3B75C85928C8AF3200FEBD72 /* TestData */,
+				3B75C85728C8AF1900FEBD72 /* Mocks */,
 			);
 			path = MarvelFunTests;
 			sourceTree = "<group>";
@@ -178,6 +238,7 @@
 				3BC0FF1A28C4FB1F006EB92A /* Resource.swift */,
 				3BC0FF1828C4F94E006EB92A /* Image.swift */,
 				3BC0FF3528C78FA2006EB92A /* Comic.swift */,
+				3B75C84B28C7D40D00FEBD72 /* DataStorage.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -186,6 +247,7 @@
 			isa = PBXGroup;
 			children = (
 				3BC0FF2328C52EE0006EB92A /* Endpoint.swift */,
+				3B75C84D28C8850600FEBD72 /* RequestError.swift */,
 				3BC0FF2528C53031006EB92A /* URLComposer.swift */,
 				3BC0FF3F28C79700006EB92A /* DataTaskPublisher.swift */,
 				3BC0FF3C28C794E4006EB92A /* NetworkServices */,
@@ -209,6 +271,7 @@
 				3BC0FF3028C69DFB006EB92A /* ComicsView.swift */,
 				3BC0FF2B28C6748A006EB92A /* CharacterRowView.swift */,
 				3BC0FF3328C78F8A006EB92A /* ComicRowView.swift */,
+				3B75C84F28C888E600FEBD72 /* ViewModifiers */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -255,6 +318,9 @@
 			dependencies = (
 			);
 			name = MarvelFun;
+			packageProductDependencies = (
+				3B75C85328C8A39400FEBD72 /* CachedAsyncImage */,
+			);
 			productName = MarvelFun;
 			productReference = 3BC0FEE328C4F712006EB92A /* MarvelFun.app */;
 			productType = "com.apple.product-type.application";
@@ -327,6 +393,9 @@
 				Base,
 			);
 			mainGroup = 3BC0FEDA28C4F712006EB92A;
+			packageReferences = (
+				3B75C85228C8A39400FEBD72 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */,
+			);
 			productRefGroup = 3BC0FEE428C4F712006EB92A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -343,6 +412,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B75C85628C8A75600FEBD72 /* Launch Screen.storyboard in Resources */,
 				3BC0FEEE28C4F715006EB92A /* Preview Assets.xcassets in Resources */,
 				3BC0FEEB28C4F715006EB92A /* Assets.xcassets in Resources */,
 			);
@@ -352,6 +422,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B75C85D28C8B26C00FEBD72 /* comics-for-cahracter-1011334.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -372,6 +443,7 @@
 				3BC0FF3628C78FA2006EB92A /* Comic.swift in Sources */,
 				3BC0FF1B28C4FB1F006EB92A /* Resource.swift in Sources */,
 				3BC0FF1928C4F94E006EB92A /* Image.swift in Sources */,
+				3B75C85128C8891200FEBD72 /* RetryAlertViewModifier.swift in Sources */,
 				3BC0FF2628C53031006EB92A /* URLComposer.swift in Sources */,
 				3BC0FEE928C4F712006EB92A /* ContentView.swift in Sources */,
 				3BC0FF4228C7A25F006EB92A /* ComicsListViewModel.swift in Sources */,
@@ -381,7 +453,9 @@
 				3BC0FF4028C79700006EB92A /* DataTaskPublisher.swift in Sources */,
 				3BC0FF1728C4F73C006EB92A /* Character.swift in Sources */,
 				3BC0FF2C28C6748A006EB92A /* CharacterRowView.swift in Sources */,
+				3B75C84C28C7D40D00FEBD72 /* DataStorage.swift in Sources */,
 				3BC0FF2F28C68543006EB92A /* String+Extension.swift in Sources */,
+				3B75C84E28C8850600FEBD72 /* RequestError.swift in Sources */,
 				3BC0FF3428C78F8A006EB92A /* ComicRowView.swift in Sources */,
 				3BC0FF3B28C79395006EB92A /* DateFormatter+Extension.swift in Sources */,
 				3BC0FF2928C666FD006EB92A /* CharactersListViewModel.swift in Sources */,
@@ -396,7 +470,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B75C85B28C8B09000FEBD72 /* MockComicsNetworkService.swift in Sources */,
 				3BC0FEFD28C4F715006EB92A /* MarvelFunTests.swift in Sources */,
+				3B75C86028C8B41A00FEBD72 /* CharacterStub.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -564,7 +640,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -593,7 +669,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -709,6 +785,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3B75C85228C8A39400FEBD72 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/lorenzofiamingo/swiftui-cached-async-image";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3B75C85328C8A39400FEBD72 /* CachedAsyncImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3B75C85228C8A39400FEBD72 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */;
+			productName = CachedAsyncImage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3BC0FEDB28C4F712006EB92A /* Project object */;
 }
