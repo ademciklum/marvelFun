@@ -12,8 +12,7 @@ struct MarvelFunApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environmentObject(CharactersListViewModel())
+            ContentView(viewModel: CharactersListViewModel(dataStorage: DataStorage()))
         }
     }
 }

@@ -14,27 +14,17 @@ struct MockComicsNetworkService: ComicsNetworkServiceProtocol {
     let jsonName: String
     
     func comicsPublisher(_ characterId: Int, offset: Int = 0, limit: Int = 20) -> AnyPublisher<[Comic], Error> {
-        return Just(json)
+        let jsonDataPublisher = Future<Data?, Error> { $0(.success(jsonData)) }
             .compactMap { $0 }
-            .tryMap({ data in
-                guard let responseObject = try JSONSerialization.jsonObject(with: data) as? [String: Any],
-                      let dataDict = responseObject["data"] as? [String: Any],
-                      let resultsDict = dataDict["results"] as? [Any],
-                      let resultsData = try? JSONSerialization.data(withJSONObject: resultsDict) else {
-                    throw NSError(domain: "Parse error", code: NSURLErrorCannotParseResponse)
-                }
-                return resultsData
-            })
+            .eraseToAnyPublisher()
+        
+        return DataTaskPublisher.publisherWithData(jsonDataPublisher)
             .decode(type: [Comic].self, decoder: ComicJSONDecoder())
-            .map({ comics in
-                print("comics = \(comics.count)")
-                return comics
-            })
             .receive(on: RunLoop.main)
             .eraseToAnyPublisher()
     }
     
-    var json: Data? {
+    var jsonData: Data? {
         guard let url = Bundle.unitTestsBundle?.url(forResource: jsonName, withExtension: "json") else {
             return nil
         }

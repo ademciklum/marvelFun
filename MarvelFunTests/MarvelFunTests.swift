@@ -18,6 +18,7 @@ class MarvelFunTests: XCTestCase {
         let jsonName = "comics-for-cahracter-1011334"
         let mockNetworkService = MockComicsNetworkService(jsonName: jsonName)
         let comicsExpectation = expectation(description: "comicsExpectation")
+        
         let model = ComicsListViewModel(characterStub, networkService: mockNetworkService)
         
         model.$comics.drop(while: { $0.isEmpty }).sink { _ in

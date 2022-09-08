@@ -12,7 +12,7 @@ struct Comic: Decodable, Identifiable {
     let digitalId: Int
     let title: String
     let description: String?
-    let thumbnail: Image
+    let thumbnail: Image?
     let pageCount: Int
     let dates: [ComicDate]?
     
@@ -40,7 +40,7 @@ struct Comic: Decodable, Identifiable {
         digitalId = try container.decode(Int.self, forKey: .digitalId)
         title = try container.decode(String.self, forKey: .title)
         description = try? container.decodeIfPresent(String.self, forKey: .description)
-        thumbnail = try container.decode(Image.self, forKey: .thumbnail)
+        thumbnail = try container.decodeIfPresent(Image.self, forKey: .thumbnail)
         pageCount = try container.decode(Int.self, forKey: .pageCount)
         dates = try container.decode([ComicDate].self, forKey: .dates)
     }

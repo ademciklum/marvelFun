@@ -51,3 +51,12 @@ struct Character: Codable, Identifiable, Storable {
 }
 
 extension Array: Storable where Element: Storable { }
+
+protocol CharacterIdentifiable {
+    var id: Int { get }
+    var name: String { get }
+    var description: String { get }
+    var thumbnail: Image? { get }
+}
+
+extension Character: CharacterIdentifiable {}

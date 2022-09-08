@@ -21,11 +21,13 @@ struct ComicRowView: View {
                     .font(.footnote)
             }
             
-            CachedAsyncImage(url: comic.thumbnail.composedImageURL, content: { image in
+            CachedAsyncImage(url: comic.thumbnail?.composedImageURL, content: { image in
                 image.resizable()
             }, placeholder: {
-                ProgressView()
+                VStack { Color.cyan }
+                    .frame(height: 420)
             })
+            .background(.regularMaterial)
             .aspectRatio(contentMode: .fill)
             .cornerRadius(8)
             

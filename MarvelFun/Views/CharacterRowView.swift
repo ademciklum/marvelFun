@@ -14,12 +14,15 @@ struct CharacterRowView: View {
     
     var body: some View {
         HStack(spacing: 16) {
-            CachedAsyncImage(url: character.thumbnail?.composedImageURL, content: { image in
+            CachedAsyncImage(url: character.thumbnail?.composedImageURL, urlCache: .imageCache, content: { image in
                 image.resizable()
             }, placeholder: {
-                ProgressView()
-                    .frame(width: 50, height: 50)
+                VStack {
+                    Color.cyan
+                }
+                .frame(width: 70, height: 70)
             })
+            .background(.regularMaterial)
             .aspectRatio(contentMode: .fill)
             .frame(width: 70, height: 70, alignment: .topLeading)
             .cornerRadius(8.0)

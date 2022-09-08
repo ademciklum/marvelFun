@@ -9,8 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @EnvironmentObject var viewModel: CharactersListViewModel
-    @Environment(\.dismissSearch) private var dismissSearch
+    @ObservedObject var viewModel: CharactersListViewModel
     
     var body: some View {
         NavigationView {
@@ -36,9 +35,7 @@ struct ContentView: View {
             .navigationBarTitle("Marvel fun")
         }
         .accentColor(.red)
-        .onReceive(NotificationCenter.default.publisher(for: UIApplication.willTerminateNotification)) { _ in
-            DataStorage().save(viewModel.characters)
-        }
+        .onReceive(NotificationCenter.default.publisher(for: UIApplication.willTerminateNotification)) { _ in viewModel.saveCharacters() }
         .modifier(RetryAlertViewModifier(error: $viewModel.lastError, action: {
             viewModel.lastError = nil
             switch viewModel.lastError {
@@ -50,5 +47,13 @@ struct ContentView: View {
                 break
             }
         }))
+        .overlay(Group {
+            if viewModel.characters.isEmpty {
+                Text("Oops, loos like there's no data...")
+                    .font(.headline)
+                    .transition(AnyTransition.asymmetric(insertion: AnyTransition.opacity.animation(Animation.default.delay(2)),
+                                                         removal: AnyTransition.opacity))
+            }
+        })
     }
 }

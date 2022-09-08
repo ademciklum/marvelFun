@@ -8,10 +8,9 @@
 import Foundation
 import Combine
 
-class ComicsListViewModel: ObservableObject {
+class ComicsListViewModel: ObservableObject, ComicsListViewModelProtocol, ErrorPublishedProtocol {
     
     @Published var character: CharacterIdentifiable
-    @Published var sort: Bool = false
     @Published var comics = [Comic]()
     @Published var lastError: RequestError?
     
@@ -40,11 +39,9 @@ class ComicsListViewModel: ObservableObject {
     }
 }
 
-protocol CharacterIdentifiable {
-    var id: Int { get }
-    var name: String { get }
-    var description: String { get }
-    var thumbnail: Image? { get }
+protocol ComicsListViewModelProtocol {
+    var character: CharacterIdentifiable { get }
+    var comics: [Comic] { get }
+    
+    func loadComics()
 }
-
-extension Character: CharacterIdentifiable {}

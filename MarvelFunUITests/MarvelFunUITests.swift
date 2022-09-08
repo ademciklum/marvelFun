@@ -22,12 +22,44 @@ class MarvelFunUITests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
-        // UI tests must launch the application that they test.
+    func testComicsSort() throws {
         let app = XCUIApplication()
         app.launch()
-
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        
+        waitForNotZero(query: app.tables.cells, timeout: 10.0)
+        
+        let element = app.tables.cells.element(boundBy: 1)
+        element.tap()
+        
+        let sortStaticText = "Sort"
+        let sortButton = app.navigationBars.buttons[sortStaticText]
+        XCTAssertTrue(sortButton.waitForExistence(timeout: 10.0), "\(sortStaticText) button not found")
+        takeScreenshot()
+        sortButton.tap()
+        
+        let titleStaticText = "Title"
+        let titleButton = app.buttons[titleStaticText]
+        XCTAssertTrue(titleButton.waitForExistence(timeout: 10.0), "\(titleStaticText) button not found")
+        titleButton.tap()
+        
+        let checkTitleStaticText = "Hulk (2008) #55"
+        let checkTitleTextElement = app.staticTexts[checkTitleStaticText]
+        app.swipeUp()
+        XCTAssertTrue(checkTitleTextElement.waitForExistence(timeout: 10.0), "\(checkTitleStaticText) title should be first")
+        takeScreenshot()
+        
+        sortButton.tap()
+        
+        let dateStaticText = "Date"
+        let dateButton = app.buttons[dateStaticText]
+        XCTAssertTrue(dateButton.waitForExistence(timeout: 10.0), "\(dateStaticText) button not found")
+        dateButton.tap()
+        
+        let checkDateStaticText = "Mar 20, 2013"
+        let dateStaticTextElement = app.staticTexts[checkDateStaticText]
+        app.swipeDown()
+        XCTAssertTrue(dateStaticTextElement.waitForExistence(timeout: 10.0), "\(checkDateStaticText) date should be on top")
+        takeScreenshot()
     }
 
     func testLaunchPerformance() throws {

@@ -66,8 +66,10 @@ struct CharacterSectionHeaderView: View {
             AsyncImage(url: character.thumbnail?.composedImageURL, content: { image in
                 image.resizable()
             }, placeholder: {
-                ProgressView()
+                VStack { Color.cyan }
+                    .frame(height: 320)
             })
+            .background(.regularMaterial)
             .aspectRatio(contentMode: .fill)
 
             Text(character.description)
